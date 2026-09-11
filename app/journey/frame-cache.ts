@@ -42,7 +42,8 @@ export class FrameCache {
 
   private async load(path: string, controller: AbortController) {
     try {
-      const response = await fetch(path, { signal: controller.signal, cache: "force-cache" });
+      // Revalidate replaceable photographs so the canvas cannot revive an old edit.
+      const response = await fetch(path, { signal: controller.signal, cache: "no-cache" });
       if (!response.ok) throw new Error("Frame unavailable");
       const image = await createImageBitmap(await response.blob());
       if (this.disposed) { image.close(); return; }

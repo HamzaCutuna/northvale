@@ -4,7 +4,7 @@ import { useEffect, useRef, type CSSProperties, type ReactNode } from "react";
 import Image from "next/image";
 import { JOURNEY } from "./journey-config";
 import { FrameCache } from "./frame-cache";
-import { clamp, coverPlacement, createTimeline, framePath, heroTransform, sampleTimeline, smoothstep, type Sample } from "./journey-math";
+import { clamp, coverPlacement, createTimeline, framePath, sampleTimeline, smoothstep, type Sample } from "./journey-math";
 import styles from "./journey.module.css";
 
 type JourneyControls = { arrive: () => void; returnToLake: () => void; simplify: () => void };
@@ -29,7 +29,7 @@ export default function CabinJourney({ children }: { children: ReactNode }) {
     const shade = viewport.querySelector<HTMLElement>(".hero-shade");
     const ui = Array.from(viewport.querySelectorAll<HTMLElement>(".site-header, .hero-content, .hero-footnote"));
     const motionPreference = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const timeline = createTimeline(JOURNEY.clips);
+    let timeline = createTimeline(window.innerWidth <= 600 ? JOURNEY.mobileClips : JOURNEY.clips);
     let disposeEngine = () => {};
 
     function resetHero() {
@@ -85,7 +85,7 @@ export default function CabinJourney({ children }: { children: ReactNode }) {
       }
 
       function queueFrames() {
-        const clipProgress = clamp((progress - JOURNEY.pushEnd) / (JOURNEY.travelEnd - JOURNEY.pushEnd));
+        const clipProgress = progress;
         const samples = sampleTimeline(timeline, clipProgress);
         const paths = samples.map(sample => framePath(sample.clip, sample.frame, mobile));
         if (lastFramePath) paths.push(lastFramePath);
@@ -105,7 +105,7 @@ export default function CabinJourney({ children }: { children: ReactNode }) {
       function drawCover(image: ImageBitmap, opacity = 1, sample?: Sample) {
         const camera = sample?.clip.camera;
         const amount = sample ? clamp(sample.frame / (sample.clip.frameCount - 1)) : 0;
-        const placement = coverPlacement(image, { width, height }, mobile ? camera?.mobileX ?? .5 : .5);
+        const placement = coverPlacement(image, { width, height }, .5);
         const zoom = 1 + ((camera?.zoom ?? 1) - 1) * amount;
         const focusX = width * (camera?.x ?? .5);
         const focusY = height * (camera?.y ?? .5);
@@ -122,8 +122,7 @@ export default function CabinJourney({ children }: { children: ReactNode }) {
         if (Math.abs(target - progress) < 0.00003) progress = target;
         root!.dataset.progress = progress.toFixed(4);
         root!.dataset.moving = progress > 0.0001 ? "true" : "false";
-        const transform = heroTransform(JOURNEY.master, JOURNEY.openingCrop, { width, height }, progress / JOURNEY.pushEnd);
-        if (media) media.style.transform = progress ? `translate3d(${transform.x}px, ${transform.y}px, 0) scale(${transform.scale})` : "";
+        if (media) media.style.transform = "";
         const uiOpacity = 1 - smoothstep(progress / 0.105);
         for (const element of ui) {
           element.style.filter = uiOpacity < 1 ? `opacity(${uiOpacity})` : "";
@@ -154,7 +153,7 @@ export default function CabinJourney({ children }: { children: ReactNode }) {
             if (!disposed) loadingStatus!.hidden = false;
           }, 2500);
         }
-        const sceneOpacity = drawn ? smoothstep((progress - JOURNEY.handoffStart) / (JOURNEY.handoffEnd - JOURNEY.handoffStart)) : 0;
+        const sceneOpacity = drawn ? smoothstep(progress / .025) : 0;
         surface!.style.opacity = String(sceneOpacity);
         // Never announce arrival before its actual image has decoded.
         const arrived = progress >= .93 && canDraw;
@@ -175,17 +174,22 @@ export default function CabinJourney({ children }: { children: ReactNode }) {
         top = root!.getBoundingClientRect().top + window.scrollY;
         range = Math.max(1, root!.offsetHeight - nextHeight);
         mobile = nextWidth <= 600;
+        timeline = createTimeline(mobile ? JOURNEY.mobileClips : JOURNEY.clips);
         if (nextWidth !== width || nextHeight !== height) {
           width = nextWidth;
           height = nextHeight;
-          dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+          dpr = Math.min(window.devicePixelRatio || 1, mobile ? 3 : 1.5);
           surface!.width = Math.round(width * dpr);
           surface!.height = Math.round(height * dpr);
           paintKey = "";
-          const previous = cache.get(lastFramePath);
-          if (previous) {
+          const currentFrames = sampleTimeline(timeline, progress).map(sample => ({
+            sample, image: cache.get(framePath(sample.clip, sample.frame, mobile)),
+          }));
+          if (currentFrames.length && currentFrames.every(frame => frame.image)) {
             context!.setTransform(dpr, 0, 0, dpr, 0, 0);
-            drawCover(previous);
+            drawCover(currentFrames[0].image!, 1, currentFrames[0].sample);
+            if (currentFrames[1]) drawCover(currentFrames[1].image!, currentFrames[1].sample.opacity, currentFrames[1].sample);
+            context!.globalAlpha = 1;
           } else drawn = false;
         }
         onScroll();
@@ -263,7 +267,7 @@ export default function CabinJourney({ children }: { children: ReactNode }) {
         </div>
       </div>
       <section ref={staticArrival} className={styles.staticArrival} aria-label="Inside Northvale" tabIndex={-1}>
-        <Image src={JOURNEY.poster} fill sizes="(max-aspect-ratio: 16/9) 177vh, 100vw" alt="Inside Northvale: a cream linen sofa by lake-facing windows, warm timber and a glowing wood stove." />
+        <picture><source media="(max-width: 600px)" srcSet="/journey/stills/mobile/08-living-room-v2-portrait.webp" /><Image src={JOURNEY.poster} fill sizes="(max-aspect-ratio: 16/9) 177vh, 100vw" alt="Inside Northvale: a cream linen sofa by lake-facing windows, warm timber and a glowing wood stove." /></picture>
         <div className={styles.staticCaption}>
           <p>Make yourself at home.</p>
           <a href="#stay">Stay a little longer <span aria-hidden="true">↓</span></a>
@@ -272,3 +276,6 @@ export default function CabinJourney({ children }: { children: ReactNode }) {
     </section>
   );
 }
+
+
+

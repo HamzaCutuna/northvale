@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import NorthvaleMark from "./northvale-mark";
-import cabin from "../public/images/northvale-hero.webp";
+import { JOURNEY } from "./journey/journey-config";
 
 function ArrowIcon() {
   return (
@@ -31,16 +31,18 @@ export default function NorthvaleHero() {
 
       <main id="northvale" className="hero" tabIndex={-1}>
         <div className="hero-media">
+          <picture><source media="(max-width: 600px)" srcSet={JOURNEY.mobileClips[0].mobilePattern} />
           <Image
             className="hero-image"
-            src={cabin}
+            src={JOURNEY.clips[0].pattern}
+            unoptimized
             alt="Northvale’s warm-lit timber cabin on a rocky lakeshore, with pine forest and dramatic mountains reflected in the evening water."
             fill
             sizes="(max-width: 600px) 1500px, (max-aspect-ratio: 16/9) 177vh, 100vw"
             loading="eager"
             fetchPriority="high"
-            placeholder="blur"
-          />
+            placeholder="empty"
+          /></picture>
         </div>
 
         <div className="hero-shade" aria-hidden="true" />
@@ -113,3 +115,5 @@ export default function NorthvaleHero() {
     </>
   );
 }
+
+
