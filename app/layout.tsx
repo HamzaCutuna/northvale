@@ -20,11 +20,11 @@ const northvaleSans = localFont({
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
-  title: "Northvale — A private lakeside retreat",
+  title: "Northvale - A private lakeside retreat",
   description: "A quiet cabin beside a mountain lake. Held by forest, warmed by fire. Discover Northvale, a little place to slow down.",
   icons: { icon: "/icon.svg" },
   openGraph: {
-    title: "Northvale — A little closer to nowhere",
+    title: "Northvale - A little closer to nowhere",
     description: "A quiet cabin beside a mountain lake. Room to breathe. Time to just be.",
     type: "website",
     images: [{ url: "/images/northvale-hero.webp", alt: "Northvale cabin beside a mountain lake at early evening" }],
@@ -38,3 +38,4 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     </html>
   );
 }
+

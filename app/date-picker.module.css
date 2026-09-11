@@ -1,0 +1,31 @@
+.dates { grid-column:1 / -1; min-width:0; }
+.triggers { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+.dates button { font-family:var(--font-northvale-sans),Arial,sans-serif; cursor:pointer; }
+.triggers button { display:block; margin:0; min-height:77px; width:100%; min-width:0; padding:0 0 10px; border:0; border-bottom:1px solid rgb(23 34 31 / 25%); color:var(--pine); background:transparent; text-align:left; }
+.triggers button:hover { background:transparent; border-bottom-color:var(--pine); }
+.triggers button > span:first-child { display:block; margin-bottom:16px; font-size:10px; letter-spacing:.1em; text-transform:uppercase; }
+.triggers button > span:last-child { display:flex; justify-content:space-between; align-items:center; gap:7px; font-size:12px; white-space:nowrap; }
+.triggers svg { flex-shrink:0; }
+.triggers .activeTrigger { border-bottom:2px solid var(--pine); }
+.calendar { margin-top:20px; padding:18px 0 0; border-top:1px solid rgb(23 34 31 / 14%); background:#f7f3eb; }
+.prompt { margin:0 0 10px; font-size:10px; color:var(--muted); letter-spacing:.02em; }
+.month { display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:14px; }
+.month h4 { margin:0; font-family:var(--font-northvale-serif),Georgia,serif; font-size:29px; font-weight:400; letter-spacing:-.02em; }
+.month button,.bottom button { display:inline-flex; align-items:center; justify-content:center; margin:0; min-height:40px; min-width:40px; padding:5px; border:0; background:transparent; color:var(--pine); font-size:18px; }
+.month button:hover,.bottom button:hover { background:#e9e4d9; }
+.month button:disabled { opacity:.25; cursor:default; }
+.weekdays,.days { display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:3px; }
+.weekdays { margin-bottom:9px; text-align:center; font-size:10px; color:var(--muted); }
+.days button { position:relative; display:flex; align-items:center; justify-content:center; grid-column:auto; width:100%; min-width:0; min-height:44px; height:44px; margin:0; padding:0; border:1px solid transparent; background:transparent; color:var(--pine); font-size:12px; transition:background 140ms ease; }
+.days button:hover:not(:disabled) { background:#e5e1d6; }
+.days button:disabled { opacity:.26; cursor:default; }
+.days button[data-range=true] { background:#e5e5da; }
+.days button[aria-current=date]::after { content:""; position:absolute; bottom:5px; width:3px; height:3px; border-radius:50%; background:currentColor; }
+.days button[aria-pressed=true],.days button[aria-pressed=true]:hover { color:var(--ivory); background:var(--pine); opacity:1; }
+.days button:focus-visible { outline-offset:1px; z-index:1; }
+.bottom { display:flex; align-items:center; justify-content:space-between; gap:10px; border-top:1px solid rgb(23 34 31 / 14%); margin-top:13px; padding-top:6px; }
+.bottom span { font-size:10px; color:var(--muted); }
+.bottom button { font-size:10px; min-height:40px; text-decoration:underline; text-underline-offset:4px; }
+@media(max-width:380px) { .triggers { gap:12px; } .triggers button > span:last-child { font-size:11px; } .days button { min-height:34px; } .month h4 { font-size:26px; } }
+@media(prefers-reduced-motion:reduce) { .days button { transition:none; } }
+
