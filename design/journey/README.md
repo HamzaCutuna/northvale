@@ -8,7 +8,7 @@ The user chose to review the existing imagery on 10 September 2026 after declini
 - The exterior uses frames 0–107 and 138–192 of the Seedance source, with a short 0.24-second blend. The source's baked, extended dissolve was removed.
 - The entrance joins the Kling interior clip with a 0.16-second blend. It moves through the open doorway and ends in the living room.
 - The Wan repair clip is excluded: it introduced a second facade behind the entrance. Its files remain available for comparison.
-- Scroll runs through 8.5 viewport heights. Image frames provide reversible seeking without video-keyframe delays. Desktop frames are 1600 × 900; mobile frames are 960 × 540. Decoded images are held in a bounded cache rather than loading the entire sequence into memory.
+- Scroll runs through 5 viewport heights. Image frames provide reversible seeking without video-keyframe delays. Desktop frames are 1600 × 900; mobile frames are 960 × 540. Decoded images are held in a bounded cache rather than loading the entire sequence into memory.
 - Reduced motion and unavailable canvas use an exterior/interior still alternative. There is a keyboard skip, return control, and an image-loading fallback.
 
 ## Known visual limitation
@@ -39,8 +39,8 @@ Only the hero-to-interior experience is implemented. Booking, lifestyle and revi
 
 ## Replacement photographic journey — September 11, 2026
 
-The active webpage now uses the user-supplied photographs in `design/northvale-review`, replacing all previous generated video frames. The hero remains unchanged. Its exact opening crop is the first canvas image, followed by 00, 01, 02, 03-v3, 04, 05, 06, 07 and 08-v2. Rejected entrance versions and the original 08 are excluded.
+The active webpage now uses the user-supplied photographs in `design/northvale-review`, replacing all previous generated video frames. The hero remains unchanged. Its exact opening crop is the first canvas image, followed by 01, 03-v3, 06 and 08-v2. Redundant near-duplicates (00 opening door edit, 02 terrace edge, 04 doorway approach, 07 first step inside) were removed from the scroll sequence on 11 September 2026 to keep each beat visually distinct. Rejected entrance versions and the original 08 are excluded.
 
-WebP copies live in `public/journey/stills` with smaller mobile copies. Originals are preserved. Scroll drives per-photo forward zooms and reversible crossfades in a ten-screen pinned track. Adjacent images are decoded ahead of the current view; decoded memory is bounded. Reduced-motion visitors receive the original hero and the new living-room photograph without the pinned motion.
+WebP copies live in `public/journey/stills` with smaller mobile copies. Originals are preserved. Scroll drives per-photo forward zooms and reversible crossfades in a five-screen pinned track. Adjacent images are decoded ahead of the current view; decoded memory is bounded. Reduced-motion visitors receive the original hero and the new living-room photograph without the pinned motion.
 
 This is an edited still-image experience. The original hero-to-crop alignment is exact; the independently generated perspectives are not a geometrically continuous video. Do not describe those dissolves as a verified seamless walkthrough. Images 09–14 remain available for future booking and lifestyle work; no additional sections were built.
