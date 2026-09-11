@@ -9,7 +9,7 @@ designed and developed as a showcase of modern web design, interaction and visua
 
 <br />
 
-[Live Experience]([YOUR_LIVE_URL_HERE](https://northvale-two.vercel.app/)) · [About the Project](#about-the-project) · [Tech Stack](#tech-stack)
+[Live Experience](https://northvale-two.vercel.app/) · [About the Project](#about-the-project) · [Tech Stack](#tech-stack)
 
 </div>
 
