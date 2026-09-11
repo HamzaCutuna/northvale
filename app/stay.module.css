@@ -1,0 +1,54 @@
+.continuation { background: var(--ink); color: var(--ivory); }
+.stay { scroll-margin-top: 30px; }
+.introduction { padding: clamp(70px, 9vw, 140px) var(--gutter) 48px; }
+.kicker { font-size: 10px; letter-spacing: .17em; text-transform: uppercase; line-height: 1.8; margin: 0 0 28px; color: var(--stone); }
+.continuation h2 { font-family: var(--font-northvale-serif), Georgia, serif; font-size: clamp(54px, 6.6vw, 104px); font-weight: 400; letter-spacing: -.04em; line-height: .98; margin: 0; }
+.continuation h2 em { font-weight: 400; }
+.description { font-size: 13px; line-height: 1.95; color: var(--stone); margin: 30px 0 0; }
+.booking { padding: 0 var(--gutter) 66px; }
+.fields { border-top: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline); display: grid; grid-template-columns: 1fr 1fr .8fr 1fr; align-items: center; }
+.fields label { display: flex; flex-direction: column; gap: 13px; padding: 27px 24px; border-right: 1px solid var(--hairline); font-size: 10px; text-transform: uppercase; letter-spacing: .15em; }
+.fields label:first-child { padding-left: 0; }
+.fields input, .fields select { color-scheme: dark; min-width: 0; width: 100%; min-height: 32px; color: var(--ivory); background: var(--ink); border: 0; border-radius: 0; font: inherit; font-size: 14px; letter-spacing: 0; text-transform: none; }
+.fields input:focus-visible, .fields select:focus-visible { outline: 1px solid var(--amber); outline-offset: 5px; }
+.fields button { margin-left: 28px; min-height: 56px; padding: 16px 22px; border: 1px solid var(--ivory); color: var(--ink); background: var(--ivory); display: flex; justify-content: space-between; align-items: center; gap: 25px; font-size: 12px; transition: background 180ms ease; }
+.fields button:hover { background: #dfdacd; }
+.fineprint, .sample { color: var(--stone); font-size: 10px; line-height: 1.8; margin: 18px 0 0; }
+.message { max-width: 780px; border-left: 1px solid var(--amber); padding: 8px 20px; font-size: 13px; line-height: 1.9; }
+.room { position: relative; height: 76svh; min-height: 420px; overflow: hidden; }
+.room img { object-fit: cover; object-position: center; }
+.room p { position: absolute; bottom: 35px; left: var(--gutter); margin: 0; padding: 18px 24px; background: rgb(16 26 24 / 78%); font-family: var(--font-northvale-serif), Georgia, serif; font-size: 30px; line-height: 1.15; }
+.stories { position: relative; min-height: 100svh; display: grid; align-items: center; isolation: isolate; }
+.storyImage { position: absolute; inset: 0; z-index: -1; }
+.storyImage img { object-fit: cover; object-position: 65% center; }
+.storyImage::after { content: ""; position: absolute; inset: 0; background: rgb(10 21 21 / 37%); }
+.storyContent { padding: clamp(70px, 8vw, 125px) var(--gutter); max-width: 850px; text-shadow: 0 2px 18px rgb(0 0 0 / 35%); }
+.stories h2 { font-size: clamp(54px, 6vw, 88px); }
+.quotes { margin-top: 45px; max-width: 490px; }
+.quotes figure { margin: 0; padding: 24px 0; border-top: 1px solid var(--hairline); }
+.quotes blockquote { font-family: var(--font-northvale-serif), Georgia, serif; font-size: clamp(25px, 2.5vw, 34px); line-height: 1.15; margin: 0 0 15px; }
+.quotes figcaption { font-size: 10px; letter-spacing: .07em; }
+.invitation { display: inline-flex; align-items: center; gap: 35px; border-bottom: 1px solid var(--hairline); min-height: 52px; font-size: 12px; margin-top: 25px; }
+.footer { display: flex; align-items: center; justify-content: space-between; gap: 25px; padding: 38px var(--gutter); }
+.footer a { font-family: var(--font-northvale-serif), Georgia, serif; font-size: 34px; }
+.footer p, .footer span { font-size: 10px; color: var(--stone); }
+@media (max-width: 800px) {
+ .fields { grid-template-columns: 1fr 1fr; }
+ .fields label { padding: 22px 15px; }
+ .fields label:nth-child(2) { border-right: 0; }
+ .fields label:nth-child(3) { padding-left: 0; border-top: 1px solid var(--hairline); }
+ .fields button { margin: 12px 0 12px 15px; }
+ .storyContent { background: rgb(10 21 21 / 24%); }
+ .footer { flex-wrap: wrap; }
+ .footer span { width: 100%; }
+}
+@media (max-width: 480px) {
+ .description br { display: none; }
+ .room { height: 65svh; }
+ .room p { font-size: 26px; bottom: 25px; }
+ .storyImage img { object-position: 73% center; }
+ .storyImage::after { background: rgb(10 21 21 / 58%); }
+ .storyContent { padding-top: 75px; padding-bottom: 65px; }
+ .fields button { gap: 10px; padding: 14px; }
+}
+@media (prefers-reduced-motion: no-preference) { .stay { scroll-behavior: smooth; } }
