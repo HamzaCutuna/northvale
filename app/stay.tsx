@@ -68,7 +68,7 @@ export default function Stay() {
         <a href="#stay" className={styles.invitation}>Find time for your own story <span aria-hidden="true">↗</span></a>
       </div>
     </section>
-    <footer className={styles.footer}><a href="#northvale" className={styles.footerBrand}><NorthvaleMark /><span>Northvale</span></a><p>A little closer to nowhere.</p><span>Concept by Helumo</span></footer>
+    <footer className={styles.footer}><a href="#northvale" className={styles.footerBrand}><NorthvaleMark /><span>Northvale</span></a><p>A little closer to nowhere.</p><span>Concept by <a href="https://www.helumo.dev/">Helumo</a></span></footer>
   </div>;
 }
 
