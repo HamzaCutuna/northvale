@@ -44,3 +44,5 @@
 
 
 @media (max-width: 600px) { .track[data-motion="scroll"] { height: 400svh; } }
+
+.staticArrival > picture { position:absolute; inset:0; display:block; }

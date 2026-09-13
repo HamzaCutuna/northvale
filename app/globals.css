@@ -178,3 +178,5 @@ h1 em { font-weight: 400; }
 @media (max-width: 600px) { .hero-image { object-position: center; } }
 /* Keep the opening photograph aligned with the first canvas view. */
 .hero-image { object-position: center; }
+
+.hero-media > picture { position:absolute; inset:0; display:block; }

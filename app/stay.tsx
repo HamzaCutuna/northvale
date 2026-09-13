@@ -57,7 +57,7 @@ export default function Stay() {
     </section>
     <Gallery />
     <section className={styles.stories} aria-labelledby="stories-title">
-      <div className={styles.storyImage}><Image src="/images/stay/12-guest-coffee-wide.webp" fill sizes="100vw" alt="A guest enjoying a quiet cup of coffee on Northvale’s terrace overlooking the lake and mountains." /></div>
+      <div className={styles.storyImage}><picture><source media="(max-width: 650px)" srcSet="/images/gallery/mobile/12-guest-coffee-wide.webp" /><Image src="/images/stay/12-guest-coffee-wide.webp" fill sizes="100vw" alt="A guest enjoying a quiet cup of coffee on Northvale’s terrace overlooking the lake and mountains." /></picture></div>
       <div className={styles.storyContent}>
         <p className={styles.kicker}>The moments that stay</p>
         <h2 id="stories-title">Less to do.<br /><em>More to remember.</em></h2>
@@ -65,7 +65,6 @@ export default function Stay() {
           <figure><blockquote>“We came for the view. What we remember most is how quiet everything became.”</blockquote><figcaption>A few days away, together</figcaption></figure>
           <figure><blockquote>“Coffee went cold. The lake kept changing. Neither of us wanted to go inside.”</blockquote><figcaption>A morning without a plan</figcaption></figure>
         </div>
-        <p className={styles.sample}>Illustrative guest stories for the Northvale concept.</p>
         <a href="#stay" className={styles.invitation}>Find time for your own story <span aria-hidden="true">↗</span></a>
       </div>
     </section>

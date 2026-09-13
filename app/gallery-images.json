@@ -1,21 +1,26 @@
 [
   {
+    "mobileSrc": "/images/gallery/mobile/01-dining-room.webp",
     "src": "/images/gallery/01-dining-room.webp",
     "alt": "Dining room"
   },
   {
+    "mobileSrc": "/images/gallery/mobile/02-bedroom.webp",
     "src": "/images/gallery/02-bedroom.webp",
     "alt": "Bedroom"
   },
   {
+    "mobileSrc": "/images/gallery/mobile/03-toilet.webp",
     "src": "/images/gallery/03-toilet.webp",
     "alt": "Bathroom"
   },
   {
+    "mobileSrc": "/images/gallery/mobile/04-kitchen.webp",
     "src": "/images/gallery/04-kitchen.webp",
     "alt": "Kitchen"
   },
   {
+    "mobileSrc": "/images/gallery/mobile/05-lake-with-mountain-view.webp",
     "src": "/images/gallery/05-lake-with-mountain-view.webp",
     "alt": "Lake with mountain view"
   }

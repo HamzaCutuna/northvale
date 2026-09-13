@@ -51,7 +51,10 @@
 .quotes figure { margin:0; padding:22px 0; border-top:1px solid rgb(23 34 31 / 18%); }
 .quotes blockquote { font-family:var(--font-northvale-serif),Georgia,serif; font-size:clamp(24px,2.5vw,32px); line-height:1.15; margin:0 0 13px; }
 .quotes figcaption { font-size:10px; letter-spacing:.05em; color:var(--muted); }
-.invitation { display:inline-flex; align-items:center; gap:30px; border-bottom:1px solid rgb(23 34 31 / 30%); min-height:48px; margin-top:20px; font-size:12px; }
+.invitation { display:inline-flex; align-items:center; justify-content:space-between; gap:28px; max-width:100%; border:1px solid rgb(23 34 31 / 18%); background:var(--paper); color:var(--ink); min-height:54px; padding:15px 20px; margin-top:18px; font-size:12px; line-height:1.5; text-decoration:none; transition:background-color 180ms ease,border-color 180ms ease; }
+.invitation span { flex:none; font-size:16px; }
+.invitation:hover { background:var(--ivory); border-color:rgb(23 34 31 / 45%); }
+.invitation:focus-visible { outline:2px solid currentColor; outline-offset:4px; }
 .footer { display:flex; align-items:center; justify-content:space-between; gap:25px; padding:32px var(--gutter); }
 .footerBrand { display:inline-flex; align-items:center; gap:14px; }
 .footerBrand span { font-family:var(--font-northvale-serif),Georgia,serif; font-size:39px; letter-spacing:-.035em; }
@@ -70,9 +73,11 @@
  .galleryGrid button { min-height:190px; }
  
  .stories { display:flex; flex-direction:column; min-height:0; }
- .storyContent { order:1; width:100%; padding-top:25px; padding-bottom:6px; }
- .storyImage { order:2; position:relative; inset:auto; z-index:auto; flex:none; width:100%; height:440px; margin-top:4px; opacity:1; mask-image:linear-gradient(to bottom,transparent,black 9%,black 86%,transparent); }
- .storyImage::after { display:none; }
+ .storyContent { order:1; position:relative; z-index:1; width:100%; padding-top:25px; padding-bottom:6px; }
+ /* Let the photograph emerge beneath the closing copy, then dissolve into paper. */
+ .storyImage { order:2; position:relative; inset:auto; z-index:0; flex:none; width:100%; height:clamp(540px,145vw,720px); margin-top:-180px; opacity:.9; mask-image:linear-gradient(to bottom,transparent 0%,rgb(0 0 0 / .06) 16%,rgb(0 0 0 / .3) 30%,rgb(0 0 0 / .8) 45%,black 57%,black 73%,rgb(0 0 0 / .55) 87%,transparent 100%); }
+ .storyImage img { object-position:center; }
+ .storyImage::after { display:block; background:linear-gradient(to right,rgb(239 235 225 / .35),transparent 55%); pointer-events:none; }
  .footer { flex-wrap:wrap; gap:14px; padding-top:16px; }
  .footer > span { width:100%; }
  .footerBrand span { font-size:34px; }
@@ -81,3 +86,6 @@
 @media(prefers-reduced-motion:reduce) { .galleryGrid img { transition:none; } .galleryGrid button:hover img { transform:none; } }
 
 
+
+/* Fill images need a positioned picture wrapper at the full container size. */
+.galleryGrid button > picture, .fullImage > picture, .storyImage > picture { position:absolute; inset:0; display:block; }
