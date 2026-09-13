@@ -1,7 +1,0 @@
-
-## Portrait mobile journey assets
-The five uploaded 941 x 1672 PNGs in public/journey/stills/mobile were converted at full resolution to quality-93 WebP files with a -portrait suffix. Mobile viewports up to 600px now use these images, including the static living-room fallback. Portrait images are centered rather than using the old landscape crop offsets. Mobile canvas rendering now supports up to 3x pixel density; desktop remains capped at 1.5x. The original hero is unchanged. The replacement mobile opening is a separately composed portrait photograph, so the old exact source-crop handoff guarantee applies only to the desktop image. Original PNGs are preserved.
-
-Mobile edit: the close-approach portrait is now both the initial hero image and first scroll image, with a single continuous push. Mobile uses only 01 close approach, 03 terrace entrance and 08 living room; opening-crop and 06 are excluded. Its scroll track is shortened to four screens. Desktop retains its existing five-shot sequence. Sources remain available for future edits.
-
-Desktop now matches the three-view mobile edit: the hero uses the desktop close-approach photograph, which continues directly into the scroll push, followed by terrace entrance and living room. The separate opening crop and threshold view are excluded on both layouts. Both tracks are four screens long. This supersedes the original locked establishing-shot requirement at the user's request; original image assets remain available.

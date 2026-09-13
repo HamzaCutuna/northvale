@@ -35,8 +35,6 @@ Every part of the project was designed around atmosphere, restraint and continui
 
 ## The experience
 
-![Approaching Northvale](design/northvale-review/01-close-approach.png)
-
 The opening experience uses scroll progression as part of the storytelling rather than treating scrolling only as navigation.
 
 The original hero gradually reframes toward the cabin while interface elements disappear, transitioning the visitor from a traditional website into a more cinematic sequence.
@@ -46,10 +44,6 @@ The visual journey follows a physically connected path:
 **Lake → Cabin → Terrace → Entrance → Living Room**
 
 Rather than presenting unrelated renders, the sequence was developed around a consistent cabin identity, camera direction, architecture, lighting and interior layout.
-
-<br />
-
-![Northvale terrace entrance](design/northvale-review/03-terrace-entrance-v3.png)
 
 <br />
 
@@ -69,10 +63,6 @@ The cabin keeps the same defining architecture throughout the experience:
 - Cool mountain-lake environment
 
 The transition from exterior to interior was treated as a continuous spatial journey rather than a collection of independent scenes.
-
-<br />
-
-![Northvale living room](design/northvale-review/08-living-room-v2.png)
 
 <br />
 
@@ -120,17 +110,11 @@ Large photography, generous negative space, thin rules and understated controls 
 
 ## Beyond the walkthrough
 
-![Northvale booking room](design/northvale-review/09-booking-room.png)
-
 The visual language established during the opening journey continues throughout the rest of the experience.
 
 Instead of switching to a generic booking interface, later sections continue using the same photography, typography, spacing and atmosphere established by the hero.
 
 Supporting imagery was created for the booking experience, interior details, terrace, landscape and lifestyle moments.
-
-<br />
-
-![Northvale terrace](design/northvale-review/11-terrace-landscape.png)
 
 <br />
 
@@ -164,18 +148,6 @@ The implementation focuses on keeping the experience visually rich without sacri
 The desktop composition uses the width of the landscape to establish scale and isolation, while portrait layouts intentionally reframe the same experience rather than simply shrinking the desktop version.
 
 Important visual subjects remain readable across viewport sizes, and alternate compositions are used where the cinematic framing requires them.
-
-<br />
-
-## Selected frames
-
-| Approach | Threshold |
-| :---: | :---: |
-| ![Approach](design/northvale-review/02-terrace-edge.png) | ![Threshold](design/northvale-review/06-at-threshold.png) |
-
-| Interior | Landscape |
-| :---: | :---: |
-| ![Interior](design/northvale-review/08-living-room-v2.png) | ![Landscape](design/northvale-review/11-terrace-landscape.png) |
 
 <br />
 
